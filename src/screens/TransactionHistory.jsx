@@ -154,7 +154,7 @@ function TransactionHistory() {
                                 <table style={{ width: '600px' }} >
                                     <thead>
                                         <tr>
-                                            Amount: category: description: date:status:
+                                            
 
 
 

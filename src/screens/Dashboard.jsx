@@ -34,7 +34,7 @@ function Dashboard() {
 
     let dispatch = useDispatch()
 
-   
+
 
 
     useEffect(() => {
@@ -85,8 +85,8 @@ function Dashboard() {
 
 
 
-    let reverseHandler = ()=>{
-        if(isReverse){
+    let reverseHandler = () => {
+        if (isReverse) {
             return
         }
         let arr = [...isDeposits].reverse()
@@ -94,8 +94,8 @@ function Dashboard() {
         setIsReverse(true)
     }
 
-    let rereverseHandler = ()=>{
-        if(!isReverse){
+    let rereverseHandler = () => {
+        if (!isReverse) {
             return
         }
         let arr = [...isDeposits].reverse()
@@ -233,7 +233,7 @@ function Dashboard() {
 
 
 
-                        {cards.length > 0 && cards.map(data=><div key={data._id}>
+                        {cards.length > 0 && cards.map(data => <div key={data._id}>
                             <div className={styles.cardContainer}>
                                 <Cards
                                     number={data.cardNumber}
@@ -318,9 +318,9 @@ function Dashboard() {
 
 
 
-                                <div style={{cursor:'pointer'}}>
-                                    <span className={`material-icons ${!isReverse &&styles.activeicon}` } onClick={rereverseHandler}>arrow_upward</span>
-                                    <span className={`material-icons ${isReverse &&styles.activeicon}` } onClick={reverseHandler}>arrow_downward</span>
+                                <div style={{ cursor: 'pointer' }}>
+                                    <span className={`material-icons ${!isReverse && styles.activeicon}`} onClick={rereverseHandler}>arrow_upward</span>
+                                    <span className={`material-icons ${isReverse && styles.activeicon}`} onClick={reverseHandler}>arrow_downward</span>
                                 </div>
 
 
@@ -335,30 +335,42 @@ function Dashboard() {
                                 <table style={{ width: '600px' }}>
                                     <thead>
                                         <tr>
-                                            <th style={{ fontWeight: '300' }}>
-                                                Status
-                                            </th>
+
+
 
                                             <th style={{ fontWeight: '300' }}>
-                                                Date
+
+                                                Amount
                                             </th>
-                                            <th style={{ fontWeight: '300' }}>
 
-                                                Description
-
-
-                                            </th>
                                             <th style={{ fontWeight: '300' }}>
 
                                                 Category
 
 
                                             </th>
+
+
                                             <th style={{ fontWeight: '300' }}>
 
-                                                Amount
+                                                Description
 
 
+                                            </th>
+
+
+
+
+                                            <th style={{ fontWeight: '300' }}>
+                                                Date
+                                            </th>
+
+
+
+
+
+                                            <th style={{ fontWeight: '300' }}>
+                                                Status
                                             </th>
 
                                         </tr>
@@ -367,23 +379,37 @@ function Dashboard() {
                                     <tbody>
 
                                         {isDeposits && isDeposits.map(data => <tr>
-                                            <td>
-                                                <span className={styles.bullet} style={{ backgroundColor: data.status === 'active' ? 'rgb(76, 149, 76)' : 'rgb(179, 179, 179)' }}></span>{data.status === 'active' ? 'complete' : 'Pending'}
-                                            </td>
-                                            <td>
-                                                {data.date.substring(0, 10)}
-                                            </td>
-                                            <td>
-                                                {data.reason}
+                                            
+                                            
+                                            <td style={{ color: colorFun(data.transactionType) }}>
 
+                                                $-{Intl.NumberFormat().format(data.amount)}.00
                                             </td>
+
                                             <td className={styles.transactionType} style={{ color: colorFun(data.transactionType) }}>
 
                                                 {data.transactionType}
                                             </td>
-                                            <td style={{ color: colorFun(data.transactionType) }}>
+                                            
 
-                                                $-{Intl.NumberFormat().format(data.amount)}.00
+
+                                            <td>
+                                                {data.reason}
+
+                                            </td>
+
+
+
+
+
+
+
+
+                                            <td>
+                                                {data.date.substring(0, 10)}
+                                            </td>
+                                            <td>
+                                                <span className={styles.bullet} style={{ backgroundColor: data.status === 'active' ? 'rgb(76, 149, 76)' : 'rgb(179, 179, 179)' }}></span>{data.status === 'active' ? 'complete' : 'Pending'}
                                             </td>
 
                                         </tr>)}
