@@ -3,8 +3,6 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import FallBackComponent from './components/Fallback';
 import { useSelector } from "react-redux";
-
-
 const Home = React.lazy(() => import('./screens/Home'))
 const About = React.lazy(() => import('./screens/About'))
 const Card = React.lazy(() => import('./screens/Cards'))
@@ -119,7 +117,6 @@ function App() {
 
 
            <Route path='/otp' element={userToken?<OTP/>:<Login/>} />
-          
            <Route path='/loan' element={userToken?<Loan/>:<Login/>} />
            <Route path='/card' element={userToken?<CardForm/>:<Login/>} />
            <Route path='/new-card-form' element={userToken?<NewCardForm/>:<Login/>} />

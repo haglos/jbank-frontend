@@ -276,6 +276,7 @@ function SendToAccont() {
         const newData = isAccount.find(item => {
             return item.accountNumber === e.target.value
         })
+
         if (!newData) {
             setAccountName(``)
             setRouteNumber('')
@@ -366,9 +367,7 @@ function SendToAccont() {
 
                         <form className={styles.form} onSubmit={submitHandler}>
 
-
                             <div className={styles.formbody}>
-
 
                                 <div className={styles.options} style={{
                                     marginBottom: '30px'
@@ -394,9 +393,10 @@ function SendToAccont() {
                                 {isMyBank && <div>
                                     <h6 > Select Recipient Account </h6>
 
-                                    <select value={accountNumber} onChange={selectRecipientAccountHandler}>
-                                        {isAccount.map(data => <option>{data.accountNumber}</option>)}
-                                    </select>
+                                    
+
+                                    <input placeholder='Account Number' onChange={selectRecipientAccountHandler} value={accountNumber} required />
+
 
                                     <input placeholder='Account Holder Name' onChange={(e) => onChangeHandler('nameOfAccount', e.target.value)} value={accountName} required />
 
